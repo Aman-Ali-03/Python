@@ -1,4 +1,3 @@
-
 def BtoD(Binary):
     decimal = 0
     j=0
@@ -34,10 +33,34 @@ def BtoOH(Binary,n):
         temp.reverse()
         o = BtoD(temp)
         oc.append(o)
+    if n==4:
+        return converter(oc)
     sum = 0
     for i in oc:
         sum = (sum*10) + i
     return sum
+
+def converter(Octal):
+    hexa = []
+    for i in Octal:
+        if i==10:
+            hexa.append('A')
+        elif i==11:
+            hexa.append('B')
+        elif i==12:
+            hexa.append('C')
+        elif i==13:
+            hexa.append('D')
+        elif i==14:
+            hexa.append('E')
+        elif i==15:
+            hexa.append('F')
+        else :
+            hexa.append(str(i))
+    Hexadecimal = ''
+    for i in hexa:
+        Hexadecimal += i
+    return Hexadecimal
 
 def OtoB(decimal):
     binary = []
@@ -51,10 +74,14 @@ def OtoB(decimal):
     return b
 
 print("*="*25)
+
 print("1. Binary to Decimal.")
 print("2. Decimal to Binary.")
 print("3. Binary to Octal.")
 print("4. Octal to Binary.")
+print("5. Binary to Hexadecimal.")
+print("6. Hexadecimal to Binary.")
+
 print("*="*25)
 choice = int(input("Enter your choice: "))
 print("*="*25)
@@ -84,5 +111,14 @@ elif choice==4:
         octal //= 10
     decimal.reverse()
     print(OtoB(decimal))
+elif choice==5:
+    binary = int(input("Enter your binary number: "))
+    Binary = []
+    while binary!=0:
+        Binary.append(binary%10)
+        binary //= 10
+    print(BtoOH(Binary,4))
+elif choice==6:
+    pass
 else:
     print("Invalid choice.")
